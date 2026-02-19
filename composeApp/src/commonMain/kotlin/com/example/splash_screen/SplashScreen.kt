@@ -3,84 +3,85 @@ package com.example.splash_screen
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.geometry.Offset
 import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.text.TextStyle
+import androidx.compose.ui.text.font.FontFamily
+import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
+import androidx.compose.ui.unit.sp
 
 @Composable
-fun SplashScreen(){
+fun SplashScreen() {
 
-    val firstLayerColor = listOf(
-        Color(0xFF001F15),
-        Color(0xFF00EDD6),
-        //Color(0xFFE4FF95)
-    )
-
-    val secondLayer = listOf(
-        Color(0xFF00EDD6),
-        Color(0xFFE4FF95)
-    )
+    val primaryColor = Color(0xFF00130E)
+    val midGreen = Color(0xFF004531)
+    val lightGreen = Color(0xFF5ED98B)
+    val lightBlue = Color(0xFF00EDD6)
+    val bottomYellow = Color(0xFFD4E182)
 
     Box(
-        modifier = Modifier.fillMaxSize()
+        modifier = Modifier.fillMaxSize(),
+        contentAlignment = Alignment.Center
     ) {
+        Box(
+            modifier = Modifier
+                .fillMaxSize()
+                .background(primaryColor)
+        )
 
         Box(
             modifier = Modifier
-                .matchParentSize()
+                .fillMaxSize()
                 .background(
-                    brush = Brush.verticalGradient(
-                        colors = firstLayerColor,
+                    brush = Brush.radialGradient(
+
+                        colors = listOf(
+                            primaryColor,
+                            midGreen,
+                            lightBlue,
+                            Color.Transparent,
+                        ),
+
+                        center = Offset(x = 500f, y = 0f),
+                        radius = 3000f,
+                    ),
+                    alpha = 0.9f
+                )
+        )
+
+        Box(
+            modifier = Modifier
+                .fillMaxSize()
+                .background(
+                    brush = Brush.radialGradient(
+                        colors = listOf(
+                            bottomYellow,
+                            lightGreen,
+
+                            Color.Transparent
+                            ),
+                        center = Offset(x = 550f, y = Float.POSITIVE_INFINITY),
+                        radius = 1000f
                     )
                 )
         )
 
-        /*Box(
-            modifier = Modifier
-                .matchParentSize()
-                .offset( y = 50.dp)
-                .background(
-                    brush = Brush.radialGradient(
-                        colors = secondLayer,
-                        center = Offset.Unspecified,
-                        radius = 150.0f,
-                        tileMode = TileMode.Mirror
-                    )
-                )
-        )*/
-
-        //
+        Text(
+            text = "Rabta",
+            style = TextStyle(
+                color = Color.White,
+                fontSize = 64.sp,
+                fontWeight = FontWeight.Normal,
+                fontFamily = FontFamily.Cursive
+            )
+        )
     }
-
-//    Column(
-//        modifier = Modifier
-//            .fillMaxSize()
-//            .background(
-//                color = Color.Green
-//            )
-//            .offset( y = 20.dp)
-//            .background(
-//                color = Color.Red
-////                brush = Brush.verticalGradient(
-////                    colors = firstLayer,
-////                    endY = 200.0f
-////                )
-//            )
-//            .offset( y= 25.dp)
-//            .background(
-//                brush = Brush.radialGradient(
-//                    0.0f to Color.Red,
-//                    1.0f to Color.Blue,
-//                    center = Offset.Unspecified,
-//                    radius = 150.0f,
-//                    tileMode = TileMode.Mirror,
-//                )
-//            )
-//    ){
-//
-//    }
 }
 
 @Preview(
